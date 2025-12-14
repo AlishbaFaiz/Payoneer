@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payoneer Clone</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    .top-bar {
+      background-color: #1d1d1f;
+      color: white;
+      font-size: 11px;
+      padding: 5px 0;
+    }
+
+    .top-element{
+        margin: 4px 150px 4px 0px;
+    }
+
+    .top-bar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .nav-bar{
+        color: black;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 15px;
+        margin-left: 35px;
+    }
+
+    .btn-register {
+      background-color: #6c63ff;
+      color: white;
+      font-weight: bold;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-right: 90px;
+    }
+
+    .btn-register:hover {
+      background-color: #4a47cc;
+    }
+
+    .hero-section {
+      background: linear-gradient(to right, #f0dbf5, #fdfdfe, #eaeafa, #deeef7);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(to right, #8a2be2, #00b894);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtext {
+      font-size: 1rem;
+      color: #333;
+      margin: 20px 0;
+      max-width: 500px;
+    }
+
+    .btn-signup {
+      background-color: black;
+      color: white;
+      border-radius: 30px;
+      padding: 10px 25px;
+      font-weight: bold;
+    }
+
+    .btn-signup:hover {
+      background-color: #0497e4;
+      color: white;
+    }
+
+    .circle-wrapper {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: auto;
+    }   
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .outer-circle {
+      width: 350px;
+      height: 350px;
+      background-color: #f1f5fd;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .middle-circle {
+      width: 300px;
+      height: 300px;
+      background-color: #f5fafe;
+      top: 59%;
+      left: 59%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    .inner-circle {
+      width: 250px;
+      height: 250px;
+      background: linear-gradient(to right, #9f69d2, #5dcab4);
+      top: 59%;
+      left: 59%;
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+      z-index: 3;
+    }
+
+    .inner-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .divider{
+        color: #a2a2a2;
+    }
+
+    .nav-tabs.nav-underline .nav-link {
+      border: none;
+      position: relative;
+      color: #a2a2a2;
+      font-weight: 500;
+    }
+
+    .nav-tabs.nav-underline .nav-link.active,
+    .nav-tabs.nav-underline .nav-link:hover {
+      color: #28a745;
+    }
+
+    .nav-tabs {
+      border-bottom: none !important;
+    }
+
+    .divider{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .nav-tabs.nav-underline .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #28a745;
+      transform: scaleX(0);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .nav-tabs.nav-underline .nav-link.active::after,
+    .nav-tabs.nav-underline .nav-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .heading{
+        text-align: center;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: large;
+    }
+
+    .info-box {
+      padding: 1rem;
+      margin-bottom: 1rem;
+      margin-right: 2rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.5s ease;
+      cursor: pointer;
+      text-align: left;
+     }
+
+    .info-box:hover,
+    .info-box.active {
+      background-color: #f0fdf5;
+      border-left: 4px solid #28a745;
+    }
+
+    .image-wrapper {
+      position: relative;
+      min-height: 250px;
+      height: 80%;
+    }
+
+    .feature-image {
+      max-width: 80%;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .gradient-box {
+      background: linear-gradient(135deg, #fce5df, #e9ecf6);
+      margin-left: 2rem;
+    }  
+
+    .go-globe{
+        text-align: center;
+        color: #a2a2a2;
+
+    }
+
+    .feature-slider-section {
+      background: radial-gradient(circle at top left, #3b2045, #1d223a 80%);
+    }
+
+    .expand-p {
+      color: white !important;
+      margin-right: 200px;
+      margin-left: 50px;
+      margin-top: 30px;
+      margin-bottom: 80px;
+    }
+
+    .feature-box {
+      min-width: 300px;
+      max-width: 300px;
+      margin-right: 1.7rem;
+      padding: 1.5rem;
+      border-radius: 10px;
+      background: #121212;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      flex: 0 0 90%;
+      flex-shrink: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .feature-box p{
+        color: #565959 !important;
+    }
+
+    .feature-track {
+      display: flex;
+      animation: slide-one-by-one 6s infinite;
+      transition: transform 1s ease;
+    }
+
+    @keyframes slide-one-by-one {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-70%); }
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+    }
+
+    .progress-track {
+      height: 4px;
+      background-color: #333;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+
+      .progress-fill {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(to right, #04d361, #4facfe);
+      animation: fill-progress 6s infinite;
+      transform-origin: left;
+    }
+
+    @keyframes fill-progress {
+      0%   { transform: scaleX(0); }
+      100% { transform: scaleX(1); }
+    }
+
+    section.bg-light {
+      background: linear-gradient(to bottom, #f9fbff 0%, #eaf6fc 100%);
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      color: #1e1e1e;
+    }
+
+    .card {
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card .border-bottom {
+      border-color: #7e57c2 !important;
+    }
+
+    .card h5 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .btn-dark {
+      background-color: #1e1e1e;
+      border: none;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-dark:hover {
+      background-color: #333;
+    }
+
+    .support-section {
+      background-color: #f9fbff;
+    }
+
+    .underline {
+      height: 5px;
+      width: 150px;
+      background-image: linear-gradient(to right, #7e57c2, #2196f3);
+      border-radius: 5px;
+    }
+
+    .gradient-line {
+      height: 4px;
+      background: linear-gradient(to right, #f25c19, #d63384, #3f51b5, #009688, #4caf50);
+      position: relative;
+      border-radius: 5px;
+    }
+
+    .icon-circle {
+      width: 60px;
+      height: 60px;
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      top: -30px;
+      transform: translateX(-50%);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }   
+
+    .icon-img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .real-person{
+      margin-bottom: 100px !important;
+    }
+
+    section.support-section{
+      background: linear-gradient(to bottom, #f9fbff 0%, #eaf6fc 100%);
+    }
+
+  .testimonial-background-layer {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000%;
+      max-width: 850px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 20px;
+      z-index: 0;
+    }
+
+  .testimonial-card {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    z-index: 1;
+    }
+
+  .testimonial-photo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .testimonial-text {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 1rem;
+  }
+
+  .carousel-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    background-color: #fff;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-btn:hover {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .carousel-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  section.resource-hub{
+      background: linear-gradient(to bottom, #f9fbff 0%, #eaf6fc 100%);
+    }
+
+  .gradient-line {
+    height: 4px;
+    background: linear-gradient(to right, #fb490d, #1f88eb, #11bc89);
+    width: 100%;
+  }
+
+  .resource-hub {
+    background-color: #f8fafc;
+  }
+
+  .scroll-mask {
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .scroll-content {
+    display: flex;
+    flex-direction: column;
+    animation: scroll-up 20s linear infinite;
+    margin-right: 150px;
+  }
+
+  @keyframes scroll-up {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  .resource-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: transform 0.3s;
+    margin-bottom: 16px;
+    width: 90%;
+    max-width: 350px;
+    margin-left: auto;
+    -right: auto;
+  }
+
+  .resource-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .resource-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+
+  .read-more {
+    font-weight: 600;
+    text-decoration: none;
+    color: #000;
+    font-size: 0.9rem;
+  }
+
+  .read-more:hover {
+    text-decoration: underline;
+  }
+
+  .company-logo {
+    max-height: 40px;
+    width: auto;
+    opacity: 0.85;
+    transition: opacity 0.3s;
+  }
+
+  .company-logo:hover {
+    opacity: 1;
+  }
+
+  .get-started-section {
+    background: radial-gradient(circle at center, #261d4e 0%, #000 100%);
+  }
+
+  .btn-gradient {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    transition: background 0.3s;
+  }
+  .btn-gradient:hover {
+    background: linear-gradient(90deg, #5641d0 0%, #643b90 100%);
+    color: #fff;
+  }
+
+  .footer-divider {
+    height: 4px;
+    background: linear-gradient(to right, #ff4500, #8a2be2, #00ced1);
+  }
+
+  .footer-section {
+    background-color: #121212;
+    padding-top: 60px;
+  }
+
+  .footer-section h6 {
+    color: #fff;
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+
+  .footer-section ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-section ul li {
+    list-style: none;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #ccc;
+    transition: color 0.3s ease;
+  }
+
+  .footer-section ul li:hover {
+    color: #fff;
+  }
+
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .social-icon:hover {
+    background-color: #04d361;
+    color: #fff;
+  }
+
+  .footer-section{
+    background: radial-gradient(circle at center, #261d4e 0%, #000 100%);
+  }
+
+
+  </style>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <div class="top-bar text-end pe-5">
+    <div class="top-element">
+      <a href="#"><b>RESOURCES</b></a>
+      <a href="#"><b>DEVELOPERS API</b></a>
+      <a href="#"><b>ABOUT US</b></a>
+      <span class="ms-4 me-2"><b>ENGLISH</b></span>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#"><img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\payoneer-dark-logo.svg" alt="Logo" style="height: 30px;"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <b><a class="nav-link dropdown-toggle nav-bar" href="#" role="button" data-bs-toggle="dropdown">Freelancers</a></b>
+          </li>
+          <li class="nav-item dropdown">
+            <b><a class="nav-link dropdown-toggle nav-bar" href="#" role="button" data-bs-toggle="dropdown">Business</a></b>
+          </li>
+          <li class="nav-item dropdown">
+            <b><a class="nav-link dropdown-toggle nav-bar" href="#" role="button" data-bs-toggle="dropdown">Marketplace</a></b>
+          </li>
+          <b><li class="nav-item"><a class="nav-link nav-bar" href="#">Sign In</a></li></b>
+          <li class="nav-item"><a class="btn btn-register ms-2" href="#">Register →</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-center text-lg-start">
+          <h1 class="hero-title">Smart & Secure Business <br>Payments</h1>
+          <p class="hero-subtext">
+            Send and receive cross-border payments wherever your business operates. Every Payoneer account features a variety of reliable services and tools that can simplify the way you work with your global clients, contractors, and suppliers.
+          </p>
+          <button class="btn btn-signup">Sign up now</button>
+        </div>
+
+        <div class="col-lg-6 text-center mt-4 mt-lg-0">
+            <div class="circle-wrapper">
+                <div class="circle outer-circle"></div>
+                <div class="circle middle-circle"></div>
+                <div class="circle inner-circle">
+                    <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\download.png" alt="Business Woman">
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-5">
+  <div class="container text-center top-part">
+    <h2 class="fw-bold mt-5">Introducing the Payoneer account</h2>
+    <p class="text-muted mb-5">
+      Welcome to business payments made easy - Payoneer is the global platform that gives<br>
+      you all you need to get your money flowing and your business growing.
+    </p>
+
+    <ul class="nav justify-content-center nav-tabs nav-underline mb-5">
+      <h4 class="divider">|</h4>
+      <li class="nav-item"><a class="nav-link active" href="#">Get paid</a></li>
+      <h4 class="divider">|</h4>
+      <li class="nav-item"><a class="nav-link" href="#">Pay and use funds</a></li>
+      <h4 class="divider">|</h4>
+      <li class="nav-item"><a class="nav-link" href="#">Go further, faster</a></li>
+      <h4 class="divider">|</h4>
+      <li class="nav-item"><a class="nav-link" href="#">Hire & Pay Globally</a></li>
+      <h4 class="divider">|</h4>
+    </ul>
+
+    <div class="row">
+      <div class="col-md-6 mt-5">
+        <div class="info-box active">
+          <h6 class="fw-bold heading">Billing's a breeze</h6>
+          <p class="text-muted">Overseas doesn't mean overcomplicated. With a few clicks, request payments from nearly anyone, anywhere and leave the rest to us.</p>
+        </div>
+
+        <div class="info-box">
+          <h6 class="fw-bold heading">Work global, feel local</h6>
+          <p class="text-muted">Need a local bank account to get paid on Amazon or by a client? Local receiving accounts act just like local bank details making it easy for the world to pay you, fast.</p>
+        </div>
+
+        <div class="info-box">
+          <h6 class="fw-bold heading">Seamless marketplace integrations</h6>
+          <p class="text-muted">We're integrated with 2,000+ platforms like eBay, Airbnb, Fiverr so you can receive marketplace payments without a hassle.</p>
+        </div>
+
+        <div class="info-box">
+          <h6 class="fw-bold heading">Online shop? No problem</h6>
+          <p class="text-muted">Accept card payments, high acceptance rates, and 0% currency conversion fees on USD and EUR.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 mt-5">
+        <div class="image-wrapper gradient-box rounded-4 p-5">
+          <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\billing-a-breeze.png.webp" class="feature-image active" alt="Billing Image">
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+  <section>
+    <div class="go-globe">
+        <h1 class="mb-5" style="color: #1d1d1f; font-size: 80px;">Go global</h1>
+        <p style="margin-left: 440px; margin-right: 440px; margin-bottom: 70px;">We support payments in 190+ countries and territories and handle 70 currencies – that’s a lot more than many other payment providers. Explore our globe to discover all the services we offer businesses around the world. </p>
+    </div>
+  </section>
+
+  <section class="py-5 text-white feature-slider-section">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-7">
+        <h2 class="fw-bold mb-3 expand-p">Expand your business network</h2>
+        <p class="text-muted expand-p">
+          Open up your business to any market and feel confident that Payoneer has the local currency and regulations covered. <br>
+          One account connects you to the many partners, markets, and customers who already trust us with their business payments.
+        </p>
+      </div>
+    </div>
+
+    <div class="position-relative">
+      <div class="d-flex align-items-center justify-content-between">
+        <button class="btn btn-arrow prev" aria-label="Previous">&#10094;</button>
+        <div class="overflow-hidden w-100 px-3">
+          <div class="d-flex feature-track transition">
+
+            <div class="feature-box">
+              <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\level2-icon-multiple-payment-0038-3.svg" class="mb-3 feature-icon" alt="Join" />
+              <h6 class="fw-bold">Join the network</h6>
+              <p class="text-muted">When you're with Payoneer, you're with something big, as are millions of businesses and platforms around the globe.</p>
+            </div>
+
+            <div class="feature-box">
+              <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\integrate.svg" class="mb-3 feature-icon" alt="Integrate" />
+              <h6 class="fw-bold">Integrate with marketplaces</h6>
+              <p class="text-muted">We're integrated with 2,000+ platforms like Wish, eBay, Fiverr, Airbnb so you’re free to grow.</p>
+            </div>
+
+            <div class="feature-box">
+              <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\work like.svg" class="mb-3 feature-icon" alt="Work Local" />
+              <h6 class="fw-bold">Work like a local</h6>
+              <p class="text-muted">No long international transfers. Payoneer lets you get paid quickly and simply, like a local.</p>
+            </div>
+
+            <div class="feature-box">
+              <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\fund.svg" class="mb-3 feature-icon" alt="Work Local" />
+              <h6 class="fw-bold">The funds you need</h6>
+              <p class="text-muted">We not only have the network, we can also give you access to up to 750,000 USD to grasp opportunities in new markets with Payoneer's Capital Advance.</p>
+            </div>
+
+            <div class="feature-box">
+              <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\everystep.svg" class="mb-3 feature-icon" alt="Work Local" />
+              <h6 class="fw-bold">With you at every step</h6>
+              <p class="text-muted">Our global teams are ready to talk everything business payments in your language. We speak more than 22!</p>
+            </div>
+
+          </div>
+
+      <div class="progress-track mt-4">
+        <div class="progress-fill"></div>
+      </div>
+    </div>
+  </div>
+  </section>
+  <section class="py-5 text-center bg-light">
+  <div class="container">
+    <h2 class="fw-bold mb-3">Fees made easy</h2>
+    <p class="text-muted mb-5">We've made our pricing easy to understand, the way it should be.</p>
+
+    <div class="row justify-content-center g-4">
+
+      <div class="col-md-4">
+        <div class="card p-4 shadow-sm h-100 border-0 rounded-4">
+          <div class="mb-3">
+            <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\Screenshot 2025-07-06 021322.png" alt="Icon 1" width="32">
+          </div>
+          <div class="mb-2 border-bottom border-3 mx-auto" style="width: 40px; border-color: #7e57c2;"></div>
+          <h5 class="fw-bold">No delays, low fees</h5>
+          <p class="text-muted">Sending payments to other Payoneer customers is fast, and all transactions have refreshingly low fees.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-4 shadow-sm h-100 border-0 rounded-4">
+          <div class="mb-3">
+            <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\Screenshot 2025-07-06 021404.png" alt="Icon 2" width="32">
+          </div>
+          <div class="mb-2 border-bottom border-3 mx-auto" style="width: 40px; border-color: #7e57c2;"></div>
+          <h5 class="fw-bold">No surprises</h5>
+          <p class="text-muted">We'll always be completely transparent with our fees, so there'll be no unpleasant surprises.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-4 shadow-sm h-100 border-0 rounded-4">
+          <div class="mb-3">
+            <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\Screenshot 2025-07-06 021436.png" alt="Icon 3" width="32">
+          </div>
+          <div class="mb-2 border-bottom border-3 mx-auto" style="width: 40px; border-color: #7e57c2;"></div>
+          <h5 class="fw-bold">No trouble</h5>
+          <p class="text-muted">We collect our fees automatically, so you'll have the reassurance of knowing you're always up to date.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <a href="#" class="btn btn-dark rounded-pill px-4 py-2 fw-semibold">See our pricing</a>
+    </div>
+  </div>
+  </section>
+
+  <section class="support-section py-5 text-center">
+  <div class="container">
+    <h2 class="fw-bold mt-5 mb-5">Support when you need it</h2>
+    <div class="underline mx-auto my-2 mb-5"></div>
+    <p class="text-muted real-person">
+      When you want some help, you want it fast and from a real person.<br>
+      Our international teams are ready to help you in 22+ languages.
+    </p>
+
+    <div class="gradient-line position-relative my-5">
+      <div class="icon-circle" style="left: 25%;">
+        <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\Screenshot 2025-07-06 111826.png" alt="Support" class="icon-img">
+      </div>
+      <div class="icon-circle" style="left: 50%;">
+        <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\Screenshot 2025-07-06 111843.png" alt="How-To" class="icon-img">
+      </div>
+      <div class="icon-circle" style="left: 75%;">
+        <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\Screenshot 2025-07-06 111858.png" alt="Community" class="icon-img">
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4 mb-4">
+        <h5 class="fw-semibold">Get online support</h5>
+        <a href="#" class="text-primary text-decoration-none">Take me there →</a>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h5 class="fw-semibold">How-to videos and guides</h5>
+        <a href="#" class="text-primary text-decoration-none">Take me there →</a>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h5 class="fw-semibold">Payoneer Community</h5>
+        <a href="#" class="text-primary text-decoration-none">Take me there →</a>
+      </div>
+    </div>
+  </div>
+    <h2 class="fw-bold mb-3" style="margin-top: 120px;">Footsteps to follow</h2>
+    <p class="text-muted real-person">
+      See what other businesses have to say about partnering with Payoneer.
+    </p>
+
+    <div class="container my-5">
+  <div class="testimonial-wrapper position-relative">
+    <div class="testimonial-background-layer"></div>
+
+    <div id="testimonialCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="testimonial-card text-center p-4">
+            <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\boy.png" class="testimonial-photo mb-3" alt="Testimonial Photo">
+            <h5 class="fw-bold">Kusha Raha</h5>
+            <p class="text-muted">CEO & Founder of Host4Geeks</p>
+            <p class="testimonial-text">
+              “We were losing money on charged and exchange fees when receiving payments to India and struggled finding a payment solution that works with all our clients across the world. I can summarize how Payoneer’s helped me in three words: simple, hassle-free, low cost.”
+            </p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="testimonial-card text-center p-4">
+            <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\boy.png" class="testimonial-photo mb-3" alt="Testimonial Photo">
+            <h5 class="fw-bold">Anton Klymyk</h5>
+            <p class="text-muted">Founder & CEO at Workogram</p>
+            <p class="testimonial-text">
+              "With Payoneer, I can easily send payment requests to my clients to pay using their card, ACH bank debit or bank."
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center gap-3 mt-3">
+        <button class="carousel-btn" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-icon">&larr;</span>
+        </button>
+        <button class="carousel-btn" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-icon">&rarr;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+  </section>
+
+<div class="gradient-line"></div>
+<section class="resource-hub py-5">
+  <div class="container">
+    <div class="row align-items-start">
+      
+      <div class="col-lg-5 mb-4 mb-lg-0 d-flex flex-column justify-content-center resource-left">
+        <small class="text-uppercase text-muted" style="margin-top: 150px; margin-left: 120px; margin-right: 50px;">Resource Hub</small>
+        <h2 class="fw-bold mt-2" style="margin-left: 120px; margin-right: 50px;">Visit our resource hub</h2>
+        <p class="text-muted mt-3" style="margin-left: 120px; margin-right: 50px;">
+          Videos, articles, case studies, product guides, testimonials, and useful tools to help you find the answers you’re looking for.
+        </p>
+        <a href="#" class="btn btn-dark mt-2" style="margin-left: 120px; border-radius: 20px; margin-right: 50px;">Start exploring</a>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="scroll-mask">
+          <div class="scroll-content">
+            
+            <div class="resource-card">
+              <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\NEWZEAL.webp" alt="">
+              <div class="p-3">
+                <h5 class="fw-bold mb-2">Join New Zealand’s busy…</h5>
+                <p class="text-muted small">Did you know that New Zealand’s ecommerce market is projected to grow...</p>
+                <a href="#" class="read-more">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <div class="resource-card">
+              <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\IMPROVE.webp" alt="">
+              <div class="p-3">
+                <h5 class="fw-bold mb-2">Improve your cross-border...</h5>
+                <p class="text-muted small">If your business works with international clients, then you’re probably aware of</p>
+                <a href="#" class="read-more">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <div class="resource-card">
+              <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\ins outs.webp" alt="">
+              <div class="p-3">
+                <h5 class="fw-bold mb-2">The ins and outs of Receiving Accounts:...</h5>
+                <p class="text-muted small">In today’s hyper-connected world, small and medium-sized businesses (SMBs) ha...</p>
+                <a href="#" class="read-more">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <div class="resource-card">
+              <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\top challenge.webp" alt="">
+              <div class="p-3">
+                <h5 class="fw-bold mb-2">Top challenges and solutions for...</h5>
+                <p class="text-muted small">When it comes to international payments, there are several things to consider whe...</p>
+                <a href="#" class="read-more">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <div class="resource-card">
+              <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\Blog-Header-Expert-opinion-on-keeping-your-funds-safe-315x205.jpg.webp" alt="">
+              <div class="p-3">
+                <h5 class="fw-bold mb-2">How to keep your funds safe:...</h5>
+                <p class="text-muted small">Interview with Maxim Polyachencko, VP of Financial Crime Prevention Maxim Polyachenko, Payoneer's VP of Financial Crime Prevention -- and one of</p>
+                <a href="#" class="read-more">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <div class="resource-card">
+              <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\boost-your-sales-10-habits-of-successful-online-sellers-header-315x205.jpg.webp" alt="">
+              <div class="p-3">
+                <h5 class="fw-bold mb-2">Boost your sales:...</h5>
+                <p class="text-muted small">10 habits of successful online sellers, Are you ready to transform your online sales game? The most successful online</p>
+                <a href="#" class="read-more">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <div class="resource-card">
+              <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\Blog-image-027-315x205.jpg.webp" alt="">
+              <div class="p-3">
+                <h5 class="fw-bold mb-2">Global Marketplace Tips</h5>
+                <p class="text-muted small">Maximize your reach with these strategies that can be helpfull....</p>
+                <a href="#" class="read-more">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <div class="resource-card">
+              <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\Blog-Header-Latest-safety-and-security-trends-1200_630px-1-315x205.jpg.webp" alt="">
+              <div class="p-3">
+                <h5 class="fw-bold mb-2">Seller Success Stories</h5>
+                <p class="text-muted small">10 habits of successful online sellers, Are you ready to transform your online sales game? The most successful online</p>
+                <a href="#" class="read-more">Read more &rarr;</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="company-section py-5 bg-white text-center">
+  <div class="container">
+    <h5 class="fw-bold mb-2">In good company</h5>
+    <p class="text-muted mb-4">
+      We work with businesses and marketplaces of every size,<br>
+      including several you might recognize.
+    </p>
+    <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+      <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\walmart.svg" alt="Ya Logo" class="company-logo">
+      <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\fiverr-logo.svg" alt="Tunecore Logo" class="company-logo">
+      <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\google-logo.svg" alt="eBay Logo" class="company-logo">
+      <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\visa-logo.svg" alt="Airbnb Logo" class="company-logo">
+      <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\taboola-logo.svg" alt="Walmart Logo" class="company-logo">
+      <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\tuncore-logo.svg" alt="Fiverr Logo" class="company-logo">
+      <img src="C:\Users\Computer Point\OneDrive\Desktop\Pyoneer\ebay-logo.svg" alt="Google Logo" class="company-logo">
+    </div>
+  </div>
+</section>
+
+<section class="get-started-section py-5 text-center text-white">
+  <div class="container">
+    <h3 class="fw-bold mb-3">Get started now</h3>
+    <p class="lead mb-4">
+      Tell us a few details and we’ll help you find the account that’s right for you.
+    </p>
+    <a href="#" class="btn btn-gradient px-4 py-2 rounded-pill">Let’s go</a>
+  </div>
+</section>
+
+<div class="footer-divider"></div>
+
+<footer class="footer-section text-white py-5">
+  <div class="container">
+    <div class="row gy-4">
+
+      <div class="col-md-2">
+        <h6 class="fw-bold">Solutions</h6>
+        <ul class="list-unstyled">
+          <li>Freelancers</li>
+          <li>Business</li>
+          <li>Marketplace</li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h6 class="fw-bold">Partners</h6>
+        <ul class="list-unstyled">
+          <li>Partner affiliate program</li>
+          <li>Integration partnerships</li>
+          <li>Bank partnerships</li>
+          <li>Accounting software integration</li>
+        </ul>
+      </div>
+
+      <div class="col-md-3">
+        <h6 class="fw-bold">About</h6>
+        <ul class="list-unstyled">
+          <li>About Payoneer</li>
+          <li>Pricing</li>
+          <li>Investors</li>
+          <li>Careers</li>
+          <li>Press Center</li>
+          <li>Media assets</li>
+          <li>Impact</li>
+          <li>Multi-jurisdictional licenses</li>
+          <li>Mobile app</li>
+          <li>SMB Network</li>
+          <li>Latest Product Innovations</li>
+          <li>Open source software</li>
+          <li>Service information</li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold">Help</h6>
+        <ul class="list-unstyled">
+          <li>Customer Care</li>
+          <li>Security Center</li>
+          <li>Customer assistance, complaints and disclosures policies</li>
+        </ul>
+      </div>
+
+      <div class="col-md-2">
+        <h6 class="fw-bold">Follow us</h6>
+        <div class="d-flex gap-2">
+          <div class="social-icon">X</div>
+          <div class="social-icon">F</div>
+          <div class="social-icon">in</div>
+          <div class="social-icon">▶</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
